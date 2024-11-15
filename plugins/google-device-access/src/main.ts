@@ -123,7 +123,7 @@ class NestRTCSessionControl implements RTCSessionControl {
 
     async endSession() {
         await this.camera.provider.authPost(`/devices/${this.camera.nativeId}:executeCommand`, {
-            command: "sdm.devices.commands.CameraLiveStream.GenerateWebRtcStream",
+            command: "sdm.devices.commands.CameraLiveStream.StopWebRtcStream",
             params: {
                 mediaSessionId: this.options.mediaSessionId,
             },
