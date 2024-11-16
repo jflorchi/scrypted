@@ -95,7 +95,7 @@ function toNestMode(mode: ThermostatMode): string {
 }
 
 class NestRTCSessionControl implements RTCSessionControl {
-    refreshAt = Date.now() + 4 * 60 * 1000;
+    refreshAt = Date.now() + 60000;
 
     constructor(public camera: NestCamera, public options: { streamExtensionToken: string, mediaSessionId: string }) {
     }
@@ -118,7 +118,7 @@ class NestRTCSessionControl implements RTCSessionControl {
         });
 
         this.options = result.data.results;
-        this.refreshAt = Date.now() + 4 * 60 * 1000;
+        this.refreshAt = Date.now() + 60000;
     }
 
     async endSession() {
@@ -270,7 +270,7 @@ class NestCamera extends ScryptedDeviceBase implements Readme, Camera, VideoCame
 
     addRefreshOptions(trackerId: string, mso: ResponseMediaStreamOptions): ResponseMediaStreamOptions {
         return Object.assign(mso, {
-            refreshAt: Date.now() + 4 * 60 * 1000,
+            refreshAt: Date.now() + 60000,
             metadata: {
                 trackerId,
             },
